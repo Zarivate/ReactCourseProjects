@@ -1,8 +1,22 @@
-import React, { useContext } from 'react'
-import { FaBars } from 'react-icons/fa'
+import React, { useContext } from "react";
+import { FaBars } from "react-icons/fa";
+// This is the non custom hook route
+import { AppContext, useGlobalContext } from "./context";
 
 const Home = () => {
-  return <h2>home component</h2>
-}
+  // By the way, having the parentheses () means that you're invoking it
+  const { openSidebar, openModal } = useGlobalContext();
 
-export default Home
+  return (
+    <main>
+      <button className="sidebar-toggle" onClick={openSidebar}>
+        <FaBars />
+      </button>
+      <button className="btn" onClick={openModal}>
+        show modal
+      </button>
+    </main>
+  );
+};
+
+export default Home;

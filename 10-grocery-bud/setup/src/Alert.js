@@ -1,7 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from "react";
 
-const Alert = () => {
-  return <h2>alert component</h2>
-}
+const Alert = ({ type, msg, removeAlert, list }) => {
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      removeAlert();
+    }, 3000);
+    return () => clearTimeout(timeout);
+  }, [list]);
 
-export default Alert
+  // By default all will have alert class but then depending on type it will have one other class
+  return <p className={`alert alert-${type}`}>{msg}</p>;
+};
+
+export default Alert;

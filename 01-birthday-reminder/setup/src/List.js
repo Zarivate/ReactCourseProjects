@@ -1,9 +1,22 @@
-import React from 'react';
+import React from "react";
 
-const List = () => {
+// We're saying we're looking for our people prop here
+const List = ({ people }) => {
   return (
     <>
-      <h2>list component</h2>
+      {people.map((person) => {
+        // All this stuff is coming from the "person" cause if we look in the data file it's all there
+        const { id, name, age, image } = person;
+        return (
+          <article key={id} className="person">
+            <img src={image} alt={name} />
+            <div>
+              <h4>{name}</h4>
+              <p>{age} years</p>
+            </div>
+          </article>
+        );
+      })}
     </>
   );
 };
